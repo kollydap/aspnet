@@ -36,13 +36,43 @@ public class TeamController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<Team>> CreateTeam(Team team)
+    public async Task<ActionResult<Team>> CreateTeam([FromForm] TeamWithImage teamWithImage)
     {
+        if (teamWithImage.CarImage == null || teamWithImage.CarImage.Length == 0)
+        {
+            return BadRequest("Invalid image");
+        }
+
+        var fileName = Guid.NewGuid().ToString() + Path.GetExtension(teamWithImage.CarImage.FileName);
+        var imagePath = Path.Combine("wwwroot/images", fileName);
+
+        using (var stream = new FileStream(imagePath, FileMode.Create))
+        {
+            await teamWithImage.CarImage.CopyToAsync(stream);
+        }
+
+        var team = new Team
+        {
+            Manufacturer = teamWithImage.Manufacturer,
+            Driver1 = teamWithImage.Driver1,
+            Driver2 = teamWithImage.Driver2,
+            Image = fileName
+        };
+
         _context.Teams.Add(team);
         await _context.SaveChangesAsync();
 
         return CreatedAtAction(nameof(GetTeamById), new { id = team.Id }, team);
     }
+
+    // [HttpPost]
+    // public async Task<ActionResult<Team>> CreateTeam(Team team)
+    // {
+    //     _context.Teams.Add(team);
+    //     await _context.SaveChangesAsync();
+
+    //     return CreatedAtAction(nameof(GetTeamById), new { id = team.Id }, team);
+    // }
 
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateTeam(int id, Team team)
@@ -82,7 +112,7 @@ public class TeamController : ControllerBase
         {
             return NotFound();
         }
-        
+
 
         _context.Teams.Remove(team);
         await _context.SaveChangesAsync();

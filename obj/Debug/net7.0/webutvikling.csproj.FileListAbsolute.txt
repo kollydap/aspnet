@@ -67,3 +67,4 @@
 /home/oladapo/Desktop/webutvikling/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.Design.dll
 /home/oladapo/Desktop/webutvikling/bin/Debug/net7.0/Mono.TextTemplating.dll
 /home/oladapo/Desktop/webutvikling/bin/Debug/net7.0/System.CodeDom.dll
+/home/oladapo/Desktop/webutvikling/bin/Debug/net7.0/webutvikling.staticwebassets.runtime.json

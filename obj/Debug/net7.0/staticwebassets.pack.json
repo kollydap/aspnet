@@ -1,0 +1,33 @@
+{
+  "Files": [
+    {
+      "Id": "/home/oladapo/Desktop/webutvikling/wwwroot/images/6e097ebe-0534-4fe7-a0ae-0c28a4e31b2f.png",
+      "PackagePath": "staticwebassets/images/6e097ebe-0534-4fe7-a0ae-0c28a4e31b2f.png"
+    },
+    {
+      "Id": "/home/oladapo/Desktop/webutvikling/wwwroot/images/d83a74c2-b360-47bd-beb5-dbe6433e4134.png",
+      "PackagePath": "staticwebassets/images/d83a74c2-b360-47bd-beb5-dbe6433e4134.png"
+    },
+    {
+      "Id": "/home/oladapo/Desktop/webutvikling/wwwroot/images/dc66cc3e-a266-4188-a10a-1ceb4884b361.jpeg",
+      "PackagePath": "staticwebassets/images/dc66cc3e-a266-4188-a10a-1ceb4884b361.jpeg"
+    },
+    {
+      "Id": "obj/Debug/net7.0/staticwebassets/msbuild.build.webutvikling.props",
+      "PackagePath": "build\\webutvikling.props"
+    },
+    {
+      "Id": "obj/Debug/net7.0/staticwebassets/msbuild.buildMultiTargeting.webutvikling.props",
+      "PackagePath": "buildMultiTargeting\\webutvikling.props"
+    },
+    {
+      "Id": "obj/Debug/net7.0/staticwebassets/msbuild.buildTransitive.webutvikling.props",
+      "PackagePath": "buildTransitive\\webutvikling.props"
+    },
+    {
+      "Id": "obj/Debug/net7.0/staticwebassets/msbuild.webutvikling.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

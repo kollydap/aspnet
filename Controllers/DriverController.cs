@@ -16,6 +16,36 @@ public class DriverController : ControllerBase
     {
         _context = context;
     }
+    [HttpPost]
+    public async Task<ActionResult<Driver>> CreateDriver([FromForm] DriverWithImage driverWithImage)
+    {
+        if (driverWithImage.Image == null || driverWithImage.Image.Length == 0)
+        {
+            return BadRequest("Invalid image");
+        }
+
+        var fileName = Guid.NewGuid().ToString() + Path.GetExtension(driverWithImage.Image.FileName);
+        var imagePath = Path.Combine("wwwroot/images", fileName);
+
+        using (var stream = new FileStream(imagePath, FileMode.Create))
+        {
+            await driverWithImage.Image.CopyToAsync(stream);
+        }
+
+        var driver = new Driver
+        {
+            Name = driverWithImage.Name,
+            Age = driverWithImage.Age,
+            Nationality = driverWithImage.Nationality,
+            Image = fileName
+        };
+
+        _context.Drivers.Add(driver);
+        await _context.SaveChangesAsync();
+
+        return CreatedAtAction(nameof(GetDriverById), new { id = driver.Id }, driver);
+    }
+
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Driver>>> GetAllDrivers()
     {
@@ -52,14 +82,14 @@ public class DriverController : ControllerBase
 
 
 
-    [HttpPost]
-    public async Task<ActionResult<Driver>> CreateDriver(Driver driver)
-    {
-        _context.Drivers.Add(driver);
-        await _context.SaveChangesAsync();
+    // [HttpPost]
+    // public async Task<ActionResult<Driver>> CreateDriver(Driver driver)
+    // {
+    //     _context.Drivers.Add(driver);
+    //     await _context.SaveChangesAsync();
 
-        return CreatedAtAction(nameof(GetDriverById), new { id = driver.Id }, driver);
-    }
+    //     return CreatedAtAction(nameof(GetDriverById), new { id = driver.Id }, driver);
+    // }
 
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateDriver(int id, Driver driver)
@@ -91,7 +121,7 @@ public class DriverController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleterDriver(int id)
+    public async Task<IActionResult> DeleteDriver(int id)
     {
         var driver = await _context.Drivers.FindAsync(id);
 

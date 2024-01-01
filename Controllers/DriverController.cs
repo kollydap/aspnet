@@ -2,9 +2,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 namespace webutvikling.Controllers;
 using Microsoft.AspNetCore.Mvc;
-
+using RabbitMQ.Client;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Text;
 
 [ApiController]
 [Route("[controller]")]
@@ -26,7 +27,22 @@ public class DriverController : ControllerBase
 
         var fileName = Guid.NewGuid().ToString() + Path.GetExtension(driverWithImage.Image.FileName);
         var imagePath = Path.Combine("wwwroot/images", fileName);
+        // send image path using a message broker to a python consumer to help convert image to black and white using pillow 
+        var factory = new ConnectionFactory() { HostName = "localhost" };
+        using (var connection = factory.CreateConnection())
+        using (var channel = connection.CreateModel())
+        {
+            channel.QueueDeclare(queue: "image_processor", durable: false, exclusive: false, autoDelete: false, arguments: null);
 
+            string message = imagePath.ToString();
+            var body = Encoding.UTF8.GetBytes(message);
+
+            channel.BasicPublish(exchange: "", routingKey: "image_processor", basicProperties: null, body: body);
+            Console.WriteLine($" [x] Sent {message}");
+        }
+
+    
+       
         using (var stream = new FileStream(imagePath, FileMode.Create))
         {
             await driverWithImage.Image.CopyToAsync(stream);

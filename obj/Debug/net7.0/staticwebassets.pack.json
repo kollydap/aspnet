@@ -1,8 +1,28 @@
 {
   "Files": [
     {
+      "Id": "/home/oladapo/Desktop/webutvikling/wwwroot/images/083b750d-e871-457d-81f1-b545f1b40873.jpg",
+      "PackagePath": "staticwebassets/images/083b750d-e871-457d-81f1-b545f1b40873.jpg"
+    },
+    {
+      "Id": "/home/oladapo/Desktop/webutvikling/wwwroot/images/2da06692-3fae-4d13-a610-fd141f1786c3.jpg",
+      "PackagePath": "staticwebassets/images/2da06692-3fae-4d13-a610-fd141f1786c3.jpg"
+    },
+    {
+      "Id": "/home/oladapo/Desktop/webutvikling/wwwroot/images/560a3557-0f2d-4636-80e7-395e18f994b0.jpg",
+      "PackagePath": "staticwebassets/images/560a3557-0f2d-4636-80e7-395e18f994b0.jpg"
+    },
+    {
+      "Id": "/home/oladapo/Desktop/webutvikling/wwwroot/images/6bac027c-01b7-40b4-8c4d-43f17351c26e.jpg",
+      "PackagePath": "staticwebassets/images/6bac027c-01b7-40b4-8c4d-43f17351c26e.jpg"
+    },
+    {
       "Id": "/home/oladapo/Desktop/webutvikling/wwwroot/images/6e097ebe-0534-4fe7-a0ae-0c28a4e31b2f.png",
       "PackagePath": "staticwebassets/images/6e097ebe-0534-4fe7-a0ae-0c28a4e31b2f.png"
+    },
+    {
+      "Id": "/home/oladapo/Desktop/webutvikling/wwwroot/images/cfb0f811-b03c-40d8-ad35-d7457583bc40.jpg",
+      "PackagePath": "staticwebassets/images/cfb0f811-b03c-40d8-ad35-d7457583bc40.jpg"
     },
     {
       "Id": "/home/oladapo/Desktop/webutvikling/wwwroot/images/d83a74c2-b360-47bd-beb5-dbe6433e4134.png",

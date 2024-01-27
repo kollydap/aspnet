@@ -6,16 +6,21 @@ using RabbitMQ.Client;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Text;
+using StackExchange.Redis;
+using Newtonsoft.Json;
 
 [ApiController]
 [Route("[controller]")]
 public class DriverController : ControllerBase
 {
     private readonly DriverDbContext _context;
+    private readonly IDatabase _redisDatabase;
 
     public DriverController(DriverDbContext context)
     {
         _context = context;
+        ConnectionMultiplexer redis = ConnectionMultiplexer.Connect("localhost");
+        _redisDatabase = redis.GetDatabase();
     }
     [HttpPost]
     public async Task<ActionResult<Driver>> CreateDriver([FromForm] DriverWithImage driverWithImage)
@@ -41,12 +46,13 @@ public class DriverController : ControllerBase
             Console.WriteLine($" [x] Sent {message}");
         }
 
-    
-       
+
+
         using (var stream = new FileStream(imagePath, FileMode.Create))
         {
             await driverWithImage.Image.CopyToAsync(stream);
         }
+
 
         var driver = new Driver
         {
@@ -58,6 +64,11 @@ public class DriverController : ControllerBase
 
         _context.Drivers.Add(driver);
         await _context.SaveChangesAsync();
+        Dictionary<string, object> driverDictionary = new Dictionary<string, object>
+var driverJson = JsonConvert.SerializeObject(driver);
+
+        // Save the serialized driver object to Redis cache with a key based on the driver's ID
+        await _redisDatabase.StringSetAsync($"driver:{driver.Id}", driverJson);
 
         return CreatedAtAction(nameof(GetDriverById), new { id = driver.Id }, driver);
     }

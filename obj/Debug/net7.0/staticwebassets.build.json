@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "nNfWAAabH1sIMm3EbmO5buub6NoKa+pYqzVj5hjFNjg=",
+  "Hash": "wjF/cfEBGlXllGUDyPqB5Py2Jecu3NwwlGh+OYJylec=",
   "Source": "webutvikling",
   "BasePath": "_content/webutvikling",
   "Mode": "Default",
@@ -32,6 +32,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/083b750d-e871-457d-81f1-b545f1b40873.jpg"
+    },
+    {
+      "Identity": "/home/oladapo/Desktop/webutvikling/wwwroot/images/1aa5c9e0-71b0-4fda-bd1a-07fc5e9a1ecc.png",
+      "SourceId": "webutvikling",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/oladapo/Desktop/webutvikling/wwwroot/",
+      "BasePath": "_content/webutvikling",
+      "RelativePath": "images/1aa5c9e0-71b0-4fda-bd1a-07fc5e9a1ecc.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/1aa5c9e0-71b0-4fda-bd1a-07fc5e9a1ecc.png"
     },
     {
       "Identity": "/home/oladapo/Desktop/webutvikling/wwwroot/images/2da06692-3fae-4d13-a610-fd141f1786c3.jpg",
@@ -66,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/560a3557-0f2d-4636-80e7-395e18f994b0.jpg"
+    },
+    {
+      "Identity": "/home/oladapo/Desktop/webutvikling/wwwroot/images/5c93d1ef-2d5b-46ae-b0a3-5c604465136f.png",
+      "SourceId": "webutvikling",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/oladapo/Desktop/webutvikling/wwwroot/",
+      "BasePath": "_content/webutvikling",
+      "RelativePath": "images/5c93d1ef-2d5b-46ae-b0a3-5c604465136f.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/5c93d1ef-2d5b-46ae-b0a3-5c604465136f.png"
     },
     {
       "Identity": "/home/oladapo/Desktop/webutvikling/wwwroot/images/6bac027c-01b7-40b4-8c4d-43f17351c26e.jpg",
@@ -151,6 +185,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/dc66cc3e-a266-4188-a10a-1ceb4884b361.jpeg"
+    },
+    {
+      "Identity": "/home/oladapo/Desktop/webutvikling/wwwroot/images/ed275d4a-e608-4dbf-b38d-701398e13e52.png",
+      "SourceId": "webutvikling",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/oladapo/Desktop/webutvikling/wwwroot/",
+      "BasePath": "_content/webutvikling",
+      "RelativePath": "images/ed275d4a-e608-4dbf-b38d-701398e13e52.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/ed275d4a-e608-4dbf-b38d-701398e13e52.png"
     }
   ]
 }

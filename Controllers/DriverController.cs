@@ -64,8 +64,8 @@ public class DriverController : ControllerBase
 
         _context.Drivers.Add(driver);
         await _context.SaveChangesAsync();
-        Dictionary<string, object> driverDictionary = new Dictionary<string, object>
-var driverJson = JsonConvert.SerializeObject(driver);
+
+        var driverJson = JsonConvert.SerializeObject(driver);
 
         // Save the serialized driver object to Redis cache with a key based on the driver's ID
         await _redisDatabase.StringSetAsync($"driver:{driver.Id}", driverJson);
@@ -79,18 +79,61 @@ var driverJson = JsonConvert.SerializeObject(driver);
         return await _context.Drivers.ToListAsync();
     }
 
+    // [HttpGet("{id}")]
+    // public async Task<ActionResult<Driver>> GetDriverById(int id)
+    // {
+    //     // Check if the driver exists in the cache
+    //     string driverJson = await _redisDatabase.StringGetAsync($"driver:{id}");
+    //     if (driverJson == null)
+    //     {
+
+    //         // If the driver is not found in the cache, return NotFound
+    //     }
+    //     var driver = await _context.Drivers.FindAsync(id);
+    //     if (driver == null)
+    //     {
+    //         return NotFound();
+    //     }
+
+    //     return driver;
+    //      Driver driver = JsonConvert.DeserializeObject<Driver>(driverJson);
+
+    // }
     [HttpGet("{id}")]
     public async Task<ActionResult<Driver>> GetDriverById(int id)
     {
-        var driver = await _context.Drivers.FindAsync(id);
-
-        if (driver == null)
+       
+        // Check if the driver exists in the cache
+        string driverJson = await _redisDatabase.StringGetAsync($"driver:{id}");
+        Console.WriteLine(driverJson);
+        if (driverJson != null)
         {
-            return NotFound();
+            // If the driver is found in the cache, deserialize it and return
+            Driver driver = JsonConvert.DeserializeObject<Driver>(driverJson);
+            Console.WriteLine("found in database");
+            return driver;
         }
+        else
+        {
+            // If the driver is not found in the cache, retrieve it from the database
+            var driver = await _context.Drivers.FindAsync(id);
+            if (driver == null)
+            {
+                // If the driver is not found in the database, return NotFound
+                return NotFound();
+            }
 
-        return driver;
+            // Serialize the driver object
+            driverJson = JsonConvert.SerializeObject(driver);
+
+            // Save the serialized driver object to Redis cache with a key based on the driver's ID
+            await _redisDatabase.StringSetAsync($"driver:{id}", driverJson);
+
+            // Return the driver
+            return driver;
+        }
     }
+
 
     [HttpGet("byname/{name}")]
     public ActionResult<IEnumerable<Driver>> GetDriversByName(string name)

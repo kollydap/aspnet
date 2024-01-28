@@ -71,3 +71,4 @@
 /home/oladapo/Desktop/webutvikling/bin/Debug/net7.0/RabbitMQ.Client.dll
 /home/oladapo/Desktop/webutvikling/bin/Debug/net7.0/Pipelines.Sockets.Unofficial.dll
 /home/oladapo/Desktop/webutvikling/bin/Debug/net7.0/StackExchange.Redis.dll
+/home/oladapo/Desktop/webutvikling/bin/Debug/net7.0/Newtonsoft.Json.dll
